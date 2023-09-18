@@ -1,6 +1,6 @@
 # Dicoding Microservices Submission 3: Proyek Implementasi Asynchronous Communication pada Aplikasi E-Commerce App
 
-## Objectives
+## Objective
 
 1. Start by setting up the project, which includes forking [this repository](https://github.com/dicodingacademy/a433-microservices/tree/proyek-pertama), and cloning the "order-service" and "shipping-service" applications from their respective branches. Prepare credential tokens and install necessary software.
 
@@ -213,7 +213,7 @@
    3. Scroll down to the "Danger Zone" panel and click the "Change visibility" button.
    4. Select "public" under the Change visibility pop-up. Then type the name of the image in the provided field and click the "I understand the consequences, change package visibility" button.
 
-    The screenshot below displays both the "shipping-service" and "order-service" images in GitHub Packages, and they are publicly visible.
+    The screenshot below displays both the pushed "shipping-service" and "order-service" images in GitHub Packages, and they are publicly visible.
 
    ![Screenshot 2023-09-18 at 12.45.07.png](_resources/Screenshot%202023-09-18%20at%2012.45.07.png)
 ### 4. Implementing Server Mesh with Istio on Kubernetes
@@ -318,7 +318,7 @@
    kubectl apply -f .
    ```
 
-5. Check for errors from the pod logs to ensure correct deployment:
+5. Check the pod logs for any errors to ensure correct integration of the application with RabbitMQ.
    ```bash
    kubectl logs $(kubectl get pods -l app=shipping-service -o jsonpath="{.items[0].metadata.name}")
    ```
@@ -444,7 +444,7 @@
    kubectl apply -f .
    ```
 
-7. Check for errors from the pod logs to ensure correct deployment and integration:
+7. Check the pod logs for any errors to ensure correct integration of the application with RabbitMQ:
    ```bash
    kubectl logs $(kubectl get pods -l app=order-service -o jsonpath="{.items[0].metadata.name}")
    ```
@@ -469,11 +469,11 @@
    echo "$(kubectl get secret --namespace default my-rabbitmq -o jsonpath="{.data.rabbitmq-password}" | base64 -d)"
    ```
 
-   Once logged in, you will see the dashboard:
+   Once logged in, you will see the RabbbitMQ overview dashboard:
 
    ![Screenshot 2023-09-18 at 13.34.16.png](_resources/Screenshot%202023-09-18%20at%2013.34.16.png)
 
-4. Navigate to the "Queue and Stream" tab. You should find a queue named "order," which your application created when it started. Click on the queue, and you will see the queue dashboard:
+4. Navigate to the "Queue and Stream" tab. You should find a queue named "order," which your application created when it started. Click on the "order" queue to see its dashboard:
 
    ![Screenshot 2023-09-18 at 13.38.28.png](_resources/Screenshot%202023-09-18%20at%2013.38.28.png)
 
@@ -482,7 +482,7 @@
    kubectl port-forward svc/istio-ingressgateway -n istio-system 80:80
    ```
 
-6. Execute the following command to send 10 POST requests to the order service application and test the application:
+6. Execute the following command to send ten POST requests to the order service application and test the application:
    ```bash
    for i in {1..10}; do
      curl -X POST -H "Content-Type: application/json" -d '{
