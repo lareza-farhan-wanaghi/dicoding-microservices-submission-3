@@ -1,4 +1,4 @@
-# Dicoding Microservices Submission 3: Proyek Implementasi Asynchronous Communication pada Aplikasi E-Commerce App
+# Dicoding Microservices Submission 3 (Final): Proyek Implementasi Asynchronous Communication pada Aplikasi E-Commerce App
 
 ## Objective
 
